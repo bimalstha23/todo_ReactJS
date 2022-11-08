@@ -7,7 +7,7 @@ export const Todo = ({ todo, index }) => {
     const { todos, setTodos } = useTodo();
     const [editClicked, setEditClicked] = useState(false);
     const [readonly, setReadOnly] = useState(true);
-    const [updatedtodo, setUpdatedtodo] = useState('');
+    const [updatedtodo, setUpdatedtodo] = useState(todo ? todo.text : '');
     const inputRef = useRef(null);
 
     // const formik = useFormik({
@@ -53,7 +53,7 @@ export const Todo = ({ todo, index }) => {
     }
     return (
         <div className='todo'>
-            <input name='changedtodo' className='todoText' ref={inputRef} type="text" readOnly={readonly} value={updatedtodo || todo.text} onChange={e => setUpdatedtodo(e.target.value)} />
+            <input name='changedtodo' className='todoText' ref={inputRef} type="text" readOnly={readonly} value={updatedtodo} onChange={e => setUpdatedtodo(e.target.value)} />
             <div className='actions'>
                 {!editClicked ? (
 
