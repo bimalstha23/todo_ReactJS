@@ -12,7 +12,6 @@ export const useTodo = () => useContext(todoContext);
 
 export const TodoContext = ({ children }) => {
     const [todos, setTodos] = useState([]);
-    console.log(todos);
 
     const addTodo = (todo) => {
         const todoObj = {

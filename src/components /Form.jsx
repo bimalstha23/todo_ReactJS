@@ -31,6 +31,7 @@ export const Form = () => {
                 <input className='formInput' type="text" autoFocus name='todo' placeholder='What are you Thinking to do?' value={formik?.values.todo} onChange={formik.handleChange} />
                 <button className='submit-btn' type='submit'>Add</button>
             </form>
+            {formik.errors.todo && <span>{formik.errors.todo}</span>}
 
         </div>
     )
