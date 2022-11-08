@@ -1,0 +1,33 @@
+.todo {
+    display: flex;
+    flex-direction: row;
+    margin: 5px;
+}
+
+.todoText {
+    width: 300px;
+    border: none;
+    outline: none;
+    font-size: 1rem;
+    font-weight: 400;
+    margin-left: 10px;
+}
+.actions{
+    display:flex;
+    flex-direction: row;
+}
+.actions button{
+    margin: 5px;
+    padding: 10px;
+    border: none ;
+    background-color: bisque;
+    color: darkgray;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all;
+}
+.actions button{
+    transition: all;
+    color: black;
+    transform: scale(1.1);
+}

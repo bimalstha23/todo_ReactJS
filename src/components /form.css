@@ -1,0 +1,22 @@
+.formInput {
+    width: 300px;
+    border: none;
+    outline: none;
+    font-size: 1rem;
+    font-weight: 400;
+    margin-left: 10px;
+}
+.submit-btn{
+    padding: 10px;
+    border: none ;
+    background-color: bisque;
+    color: darkgray;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all;
+}
+.submit-btn:hover{
+    transition: all;
+    color: black;
+    transform: scale(1.1);
+}

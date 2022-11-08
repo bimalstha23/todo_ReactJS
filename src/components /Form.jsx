@@ -2,6 +2,7 @@ import React from 'react'
 import { useFormik } from 'formik';
 import * as yup from 'yup';
 import { useTodo } from '../context/TodoContext';
+import './form.css';
 
 export const Form = () => {
     const { addTodo } = useTodo();
@@ -17,6 +18,7 @@ export const Form = () => {
         validationSchema: validateSchema,
         onSubmit: (values) => {
             addTodo(values.todo);
+            formik.resetForm();
         },
         onreset: (values) => {
             values.todo = ''
@@ -26,8 +28,8 @@ export const Form = () => {
     return (
         <div>
             <form action="" onSubmit={formik.handleSubmit}>
-                <input type="text" name='todo' placeholder='What are you Thinking to do?' value={formik?.values.todo} onChange={formik.handleChange} />
-                <button type='submit'>Add</button>
+                <input className='formInput' type="text" autoFocus name='todo' placeholder='What are you Thinking to do?' value={formik?.values.todo} onChange={formik.handleChange} />
+                <button className='submit-btn' type='submit'>Add</button>
             </form>
 
         </div>

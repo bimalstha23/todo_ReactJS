@@ -1,46 +1,59 @@
 import React, { useRef, useState } from 'react'
 import { useTodo } from '../context/TodoContext';
+import './todo.css';
+// import { useFormik } from 'formik';
 
-export const Todo = ({ todo }) => {
+export const Todo = ({ todo, index }) => {
     const { todos, setTodos } = useTodo();
     const [editClicked, setEditClicked] = useState(false);
-    const [focus, setFocus] = useState(false);
     const [readonly, setReadOnly] = useState(true);
     const [updatedtodo, setUpdatedtodo] = useState('');
-
     const inputRef = useRef(null);
 
-    console.log('focus', focus);
+    // const formik = useFormik({
+    //     initialValues: {
+    //         changedtodo: todo.text,
+    //     },
+    //     enableReinitialize:true,
+    //     onSubmit: () => {
 
+    //     }
+
+    // })
     const handleClick = () => {
         console.log('clicked')
         setEditClicked(true)
         setReadOnly(false);
         inputRef.current.focus();
-        setFocus(true);
-
     }
     const handleSave = () => {
         todo.text = updatedtodo;
         setReadOnly(true);
-        setFocus(false);
         setEditClicked(false);
 
+        const newArr = todos.map((el, key) => {
+            if (key === index) {
+                return { ...el, text: updatedtodo }
+            }
+            return el;
+        })
+
+        localStorage.setItem('todos', JSON.stringify(newArr));
+        setTodos(newArr);
     }
 
     const handleDelete = () => {
-        // console.log('todosDelete', todos)
-        // const newTodo =todos.splice(todos.indexOf(todo), 1)
+
         const newTodo = todos.filter(el => {
-            if (el != todo)
-                return el
+            if (el != todo) return el;
         })
+        // const newTodo = todos.splice(index, 1);
         localStorage.setItem('todos', JSON.stringify(newTodo))
         setTodos(newTodo);
     }
     return (
         <div className='todo'>
-            <input name='changedtodo' ref={inputRef} type="text" readOnly={readonly} autoFocus={focus} value={updatedtodo || todo.text} onChange={(e) => setUpdatedtodo(e.target.value)} />
+            <input name='changedtodo' className='todoText' ref={inputRef} type="text" readOnly={readonly} value={updatedtodo || todo.text} onChange={e => setUpdatedtodo(e.target.value)} />
             <div className='actions'>
                 {!editClicked ? (
 

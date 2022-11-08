@@ -18,6 +18,7 @@ export const TodoContext = ({ children }) => {
         const todoObj = {
             text: todo,
             id: Date.now(),
+            done: false,
         }
         const newTodo = [...todos, todoObj];
         localStorage.setItem('todos', JSON.stringify(newTodo));

@@ -7,9 +7,10 @@ export const Todos = () => {
     const { todos } = useTodo();
     return (
         <div className='todos-lists'>
-            {todos.map((todo) => (
-                <Todo todo={todo} />
-            )
+            {todos && (
+                todos.map((todo, index) => (
+                    <Todo todo={todo} index={index} />
+                ))
             )}
 
         </div>
